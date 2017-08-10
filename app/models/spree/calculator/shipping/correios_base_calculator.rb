@@ -29,7 +29,7 @@ module Spree
     # @return [Hash]
     #
     def compute_package package
-      return if package.nil?
+      return if package.nil? or package.order.total > 1000
       @order = package.order
 
       @stock_location = package.stock_location
@@ -76,10 +76,10 @@ module Spree
 
       end
 
-      package_item = Correios::Frete::PacoteItem.new(peso: pkg_dimensions[:weight].to_f,
-                                                     comprimento: pkg_dimensions[:depth].to_f,
-                                                     largura: pkg_dimensions[:width].to_f,
-                                                     altura: pkg_dimensions[:height].to_f)
+      package_item = Correios::Frete::PacoteItem.new(peso: 12,
+                                                     comprimento: 56,
+                                                     largura: 65,
+                                                     altura: 70)
       pkg.add_item(package_item)
 
       value = 0
