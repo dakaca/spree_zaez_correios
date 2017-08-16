@@ -76,10 +76,10 @@ module Spree
 
       end
 
-      package_item = Correios::Frete::PacoteItem.new(peso: 12,
-                                                     comprimento: 56,
-                                                     largura: 65,
-                                                     altura: 70)
+      package_item = Correios::Frete::PacoteItem.new(peso: pkg_dimensions[:weight],
+                                                     comprimento: pkg_dimensions[:depth],
+                                                     largura: pkg_dimensions[:width],
+                                                     altura: pkg_dimensions[:height])
       pkg.add_item(package_item)
 
       value = 0
