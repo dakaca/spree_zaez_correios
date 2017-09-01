@@ -29,7 +29,7 @@ module Spree
     # @return [Hash]
     #
     def compute_package package
-      return if package.nil? or package.order.total > 1000
+      return if package.nil?
       @order = package.order
 
       @stock_location = package.stock_location
